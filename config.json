@@ -22,10 +22,11 @@
           "path": "/JonathanXH?ed=2560",
           "mode": "stream-up",
           "scMaxEachPostBytes": "4194304",
-          "scMaxConcurrentPosts": 200,
-          "scMinPostsIntervalMs": 10,
-          "scMaxIdleTimeMs": 300000,
-          "scResponseHeaderTimeoutMs": 60000
+          "scMaxConcurrentPosts": 250,
+          "scMinPostsIntervalMs": 5,
+          "scMaxIdleTimeMs": 86400000,
+          "scResponseHeaderTimeoutMs": 120000,
+          "scKeepAliveTimeoutMs": 3600000
         }
       },
       "sniffing": {
