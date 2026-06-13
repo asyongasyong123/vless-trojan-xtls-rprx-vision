@@ -19,14 +19,13 @@
       "streamSettings": {
         "network": "xhttp",
         "xhttpSettings": {
-          "path": "/JonathanXH?ed=2560",
+          "path": "/JonathanXH",
           "mode": "stream-up",
-          "scMaxEachPostBytes": "8388608",
-          "scMaxConcurrentPosts": 500,
-          "scMinPostsIntervalMs": 5,
-          "scMaxIdleTimeMs": 86400000,
-          "scResponseHeaderTimeoutMs": 180000,
-          "scKeepAliveTimeoutMs": 7200000
+          "scMaxEachPostBytes": "2097152",
+          "scMaxConcurrentPosts": 100,
+          "scMinPostsIntervalMs": 15,
+          "scMaxIdleTimeMs": 600000,
+          "scResponseHeaderTimeoutMs": 60000
         }
       },
       "sniffing": {
