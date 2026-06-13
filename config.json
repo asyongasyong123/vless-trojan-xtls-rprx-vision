@@ -1,43 +1,25 @@
 {
-  "log": {
-    "loglevel": "warning"
-  },
+  "log": {"loglevel": "warning"},
   "inbounds": [
     {
       "port": 12001,
       "listen": "127.0.0.1",
       "protocol": "vless",
       "settings": {
-        "clients": [
-          {
-            "id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b",
-            "level": 0
-          }
-        ],
+        "clients": [{"id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b", "level": 0}],
         "decryption": "none"
       },
       "streamSettings": {
-        "network": "xhttp",
-        "xhttpSettings": {
-          "path": "/JonathanXH",
-          "mode": "stream-up",
-          "scMaxEachPostBytes": "2097152",
-          "scMaxConcurrentPosts": 100,
-          "scMinPostsIntervalMs": 15,
-          "scMaxIdleTimeMs": 600000,
-          "scResponseHeaderTimeoutMs": 60000
+        "network": "grpc",
+        "grpcSettings": {
+          "serviceName": "JonathanXH",
+          "multiMode": true,
+          "idle_timeout": "86400s",
+          "ping_timeout": "20s"
         }
       },
-      "sniffing": {
-        "enabled": true,
-        "destOverride": ["http", "tls"]
-      }
+      "sniffing": {"enabled": true, "destOverride": ["http", "tls"]}
     }
   ],
-  "outbounds": [
-    {
-      "protocol": "freedom",
-      "tag": "direct"
-    }
-  ]
+  "outbounds": [{"protocol": "freedom", "tag": "direct"}]
 }
