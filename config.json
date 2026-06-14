@@ -2,23 +2,50 @@
   "log": {"loglevel": "warning"},
   "inbounds": [
     {
-      "port": 12001,
-      "listen": "127.0.0.1",
+      "tag": "trojan-ws",
+      "port": 10001,
+      "listen": "0.0.0.0",
+      "protocol": "trojan",
+      "settings": {"clients": [{"password": "newbielangako"}]},
+      "sniffing": {"enabled": true, "metadataOnly": false},
+      "streamSettings": {
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "alpn": ["h2", "http/1.1"],
+          "fingerprint": "chrome",
+          "allowInsecure": true,
+          "certificates": [{}]
+        },
+        "wsSettings": {"path": "/trojan-jonathan?ed=2180"}
+      }
+    },
+    {
+      "tag": "vless-ws",
+      "port": 10002,
+      "listen": "0.0.0.0",
       "protocol": "vless",
       "settings": {
-        "clients": [{"id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b", "level": 0}],
+        "clients": [{
+          "id": "15f7e8ea-7b56-45d4-93af-31f3c592fdf1",
+          "flow": "xtls-rprx-vision",
+          "level": 0,
+          "email": "vless-jonathan"
+        }],
         "decryption": "none"
       },
+      "sniffing": {"enabled": true, "metadataOnly": false},
       "streamSettings": {
-        "network": "grpc",
-        "grpcSettings": {
-          "serviceName": "JonathanXH",
-          "multiMode": true,
-          "idle_timeout": "86400s",
-          "ping_timeout": "20s"
-        }
-      },
-      "sniffing": {"enabled": true, "destOverride": ["http", "tls"]}
+        "network": "ws",
+        "security": "tls",
+        "tlsSettings": {
+          "alpn": ["h2", "http/1.1"],
+          "fingerprint": "chrome",
+          "allowInsecure": true,
+          "certificates": [{}]
+        },
+        "wsSettings": {"path": "/vless-jonathan?ed=2180"}
+      }
     }
   ],
   "outbounds": [{"protocol": "freedom", "tag": "direct"}]
