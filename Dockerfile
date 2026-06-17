@@ -1,29 +1,23 @@
+# Stage 1: Kuhaon ang Xray
+FROM alpine:3.19 AS xray-bin
+RUN apk add --no-cache curl unzip ca-certificates
+WORKDIR /tmp
+RUN curl -fL https://github.com/XTLS/Xray-core/releases/latest/download/Xray-linux-64.zip -o xray.zip \
+ && unzip xray.zip xray \
+ && chmod +x xray \
+ && mv xray /usr/local/bin/xray \
+ && rm -rf /tmp/*
 
-gcloud builds submit \
-  --tag gcr.io/$PROJECT_ID/$CLOUD_RUN_SERVICE_NAME \
-  . \
-  --quiet &
-spinner $! "Cloud Build running"
+# Stage 2: Base nga OpenResty
+FROM openresty/openresty:alpine
+RUN apk add --no-cache ca-certificates
 
-# =========================
-# DEPLOY CLOUD RUN
-# =========================
+COPY --from=xray-bin /usr/local/bin/xray /usr/local/bin/xray
+RUN chmod +x /usr/local/bin/xray
 
-banner "DEPLOYING CLOUD RUN"
+COPY config.json /etc/xray.json
+COPY nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 
-gcloud run deploy $CLOUD_RUN_SERVICE_NAME \
-  --image gcr.io/$PROJECT_ID/$CLOUD_RUN_SERVICE_NAME \
-  --platform managed \
-  --region $REGION \
-  --allow-unauthenticated \
-  --port 8080 \
-  --cpu 4 \
-  --memory 4Gi \
-  --concurrency 1000 \
-  --timeout 3600 \
-  --min-instances 1 \
-  --max-instances 4 \
-  --execution-environment gen2 \
-  --cpu-boost \
-  --quiet &
-spinner $! "Deploying Cloud Run"
+EXPOSE 8080
+
+CMD ["/bin/sh", "-c", "set -e; xray run -c /etc/xray.json & sleep 3; openresty -g 'daemon off;'"]
