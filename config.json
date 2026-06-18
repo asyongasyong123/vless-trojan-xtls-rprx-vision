@@ -1,15 +1,19 @@
 {
-  "log": {"loglevel": "warning"},
+  "log": {
+    "loglevel": "warning"
+  },
   "inbounds": [
     {
       "port": 10001,
       "listen": "127.0.0.1",
       "protocol": "trojan",
-      "settings": {"clients": [{"password": "JonathanTrWS69", "level": 0}]},
+      "settings": {
+        "clients": [{"password": "JonathanTrWS69", "level": 0}]
+      },
       "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/JonathanTrWS?ed=2560", "headers": {"Connection": "keep-alive"}},
+        "wsSettings": {"path": "/JonathanTrWS?ed=2560"},
         "sockopt": {"tcpKeepAlive": true, "tcpKeepAliveIdle": 30, "tcpKeepAliveInterval": 15, "tcpKeepAliveProbes": 5}
       }
     },
@@ -17,35 +21,14 @@
       "port": 10002,
       "listen": "127.0.0.1",
       "protocol": "vless",
-      "settings": {"clients": [{"id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b", "level": 0}], "decryption": "none"},
+      "settings": {
+        "clients": [{"id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b", "level": 0}],
+        "decryption": "none"
+      },
       "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
       "streamSettings": {
         "network": "ws",
-        "wsSettings": {"path": "/JonathanVlWS?ed=2560", "headers": {"Connection": "keep-alive"}},
-        "sockopt": {"tcpKeepAlive": true, "tcpKeepAliveIdle": 30, "tcpKeepAliveInterval": 15, "tcpKeepAliveProbes": 5}
-      }
-    },
-    {
-      "port": 10003,
-      "listen": "127.0.0.1",
-      "protocol": "vmess",
-      "settings": {"clients": [{"id": "a7c8d9e0-f1b2-43c4-85d6-123456789abc", "alterId": 0, "level": 0}]},
-      "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {"path": "/JonathanVmWS?ed=2560", "headers": {"Connection": "keep-alive"}},
-        "sockopt": {"tcpKeepAlive": true, "tcpKeepAliveIdle": 30, "tcpKeepAliveInterval": 15, "tcpKeepAliveProbes": 5}
-      }
-    },
-    {
-      "port": 10004,
-      "listen": "127.0.0.1",
-      "protocol": "shadowsocks",
-      "settings": {"method": "chacha20-ietf-poly1305", "password": "JonathanSsWS69", "network": "tcp,udp"},
-      "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {"path": "/JonathanSsWS?ed=2560", "headers": {"Connection": "keep-alive"}},
+        "wsSettings": {"path": "/JonathanVlWS?ed=2560"},
         "sockopt": {"tcpKeepAlive": true, "tcpKeepAliveIdle": 30, "tcpKeepAliveInterval": 15, "tcpKeepAliveProbes": 5}
       }
     },
@@ -53,7 +36,9 @@
       "port": 11001,
       "listen": "127.0.0.1",
       "protocol": "trojan",
-      "settings": {"clients": [{"password": "JonathanTrHU69", "level": 0}]},
+      "settings": {
+        "clients": [{"password": "JonathanTrHU69", "level": 0}]
+      },
       "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
       "streamSettings": {
         "network": "httpupgrade",
@@ -65,7 +50,10 @@
       "port": 11002,
       "listen": "127.0.0.1",
       "protocol": "vless",
-      "settings": {"clients": [{"id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b", "level": 0}], "decryption": "none"},
+      "settings": {
+        "clients": [{"id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b", "level": 0}],
+        "decryption": "none"
+      },
       "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
       "streamSettings": {
         "network": "httpupgrade",
@@ -74,26 +62,17 @@
       }
     },
     {
-      "port": 11003,
+      "port": 12001,
       "listen": "127.0.0.1",
-      "protocol": "vmess",
-      "settings": {"clients": [{"id": "a7c8d9e0-f1b2-43c4-85d6-123456789abc", "alterId": 0, "level": 0}]},
+      "protocol": "vless",
+      "settings": {
+        "clients": [{"id": "d3f1a2b4-7e5c-4f8b-9c1d-2a3b4e5f6a7b", "level": 0}],
+        "decryption": "none"
+      },
       "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
       "streamSettings": {
-        "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/JonathanVmHU?ed=2560"},
-        "sockopt": {"tcpKeepAlive": true, "tcpKeepAliveIdle": 30, "tcpKeepAliveInterval": 15, "tcpKeepAliveProbes": 5}
-      }
-    },
-    {
-      "port": 11004,
-      "listen": "127.0.0.1",
-      "protocol": "shadowsocks",
-      "settings": {"method": "chacha20-ietf-poly1305", "password": "JonathanSsHU69", "network": "tcp,udp"},
-      "sniffing": {"enabled": true, "destOverride": ["http", "tls"]},
-      "streamSettings": {
-        "network": "httpupgrade",
-        "httpupgradeSettings": {"path": "/JonathanSsHU?ed=2560"},
+        "network": "grpc",
+        "grpcSettings": {"serviceName": "JonathanGrpc", "multiMode": false},
         "sockopt": {"tcpKeepAlive": true, "tcpKeepAliveIdle": 30, "tcpKeepAliveInterval": 15, "tcpKeepAliveProbes": 5}
       }
     }
